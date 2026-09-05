@@ -1,0 +1,20 @@
+﻿# Python
+ai-service/.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+
+# Environment
+.env
+
+# Java
+target/
+
+# Logs
+*.log

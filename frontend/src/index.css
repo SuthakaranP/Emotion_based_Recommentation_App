@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #0F0F0F;
+    color: #FFFFFF;
+    font-family: 'Inter', 'Poppins', 'Manrope', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Manrope', sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* Custom Design Tokens & Utility Classes */
+:root {
+  --spotify-green: #1DB954;
+  --spotify-green-hover: #1ED760;
+  --bg-pitch: #0F0F0F;
+  --card-dark: #171717;
+  --secondary-text: #B3B3B3;
+  --neon-glow: linear-gradient(135deg, #1DB954, #00D4FF);
+  --glass-bg: rgba(23, 23, 23, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(23, 23, 23, 0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(23, 23, 23, 0.75);
+  border-color: rgba(29, 185, 84, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(29, 185, 84, 0.08);
+}
+
+.glass-navbar {
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient Utilities */
+.brand-gradient {
+  background: linear-gradient(135deg, #1DB954, #00D4FF);
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #1DB954, #00D4FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-gradient-border {
+  position: relative;
+}
+.brand-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #1DB954, #00D4FF);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F0F0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(29, 185, 84, 0.3);
+}
+
+/* Equalizer Animation */
+@keyframes eqHeight {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.eq-container {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.eq-bar {
+  width: 3px;
+  background-color: #1DB954;
+  border-radius: 99px;
+  animation: eqHeight 0.7s ease-in-out infinite;
+}
+.eq-bar:nth-child(1) { animation-delay: 0.15s; }
+.eq-bar:nth-child(2) { animation-delay: 0.35s; }
+.eq-bar:nth-child(3) { animation-delay: 0.55s; }
+
+/* Custom Range Input */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  height: 4px;
+  cursor: pointer;
+  accent-color: #1DB954;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -4px;
+  background-color: #ffffff;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background-color: #1DB954;
+  transform: scale(1.2);
+}
+
+/* Ambient Backdrop Glows */
+.ambient-glow-green {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(29, 185, 84, 0.12) 0%, rgba(29, 185, 84, 0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.ambient-glow-cyan {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
